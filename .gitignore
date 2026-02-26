@@ -1,0 +1,6 @@
+# Diretórios gerados pelo colcon build
+build/
+install/
+log/
+
+

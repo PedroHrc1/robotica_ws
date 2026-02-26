@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- ============================================ -->
+  <!-- ARQUIVO DE MACROS                            -->
+  <!-- Contém componentes reutilizáveis             -->
+  <!-- ============================================ -->
+
+  <!-- ==================== -->
+  <!-- MACRO: LINK CILÍNDRICO -->
+  <!-- ==================== -->
+  <!--
+    Cria um link cilíndrico completo com visual, collision e inertial.
+    O cilindro é posicionado com a BASE na origem do link.
+
+    Parâmetros:
+      - name: nome do link
+      - length: comprimento do cilindro (eixo Z)
+      - radius: raio do cilindro
+      - mass: massa em kg
+      - material: nome do material (definido em properties.xacro)
+  -->
+  <xacro:macro name="cylinder_link" params="name length radius mass material">
+    <link name="${name}">
+      <visual>
+        <!-- Desloca para que a BASE do cilindro fique na origem -->
+        <origin xyz="0 0 ${length/2}" rpy="0 0 0"/>
+        <geometry>
+          <cylinder radius="${radius}" length="${length}"/>
+        </geometry>
+        <material name="${material}"/>
+      </visual>
+
+      <collision>
+        <origin xyz="0 0 ${length/2}" rpy="0 0 0"/>
+        <geometry>
+          <cylinder radius="${radius}" length="${length}"/>
+        </geometry>
+      </collision>
+
+      <inertial>
+        <origin xyz="0 0 ${length/2}" rpy="0 0 0"/>
+        <mass value="${mass}"/>
+        <!-- Fórmula de inércia para cilindro sólido -->
+        <inertia
+          ixx="${(1/12) * mass * (3*radius*radius + length*length)}"
+          ixy="0.0" ixz="0.0"
+          iyy="${(1/12) * mass * (3*radius*radius + length*length)}"
+          iyz="0.0"
+          izz="${(1/2) * mass * radius * radius}"/>
+      </inertial>
+    </link>
+  </xacro:macro>
+
+  <!-- ==================== -->
+  <!-- MACRO: LINK ESFÉRICO -->
+  <!-- ==================== -->
+  <!--
+    Cria um link esférico (útil para end effectors, caster balls, etc.)
+
+    Parâmetros:
+      - name: nome do link
+      - radius: raio da esfera
+      - mass: massa em kg
+      - material: nome do material
+  -->
+  <xacro:macro name="sphere_link" params="name radius mass material">
+    <link name="${name}">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <sphere radius="${radius}"/>
+        </geometry>
+        <material name="${material}"/>
+      </visual>
+
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <sphere radius="${radius}"/>
+        </geometry>
+      </collision>
+
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="${mass}"/>
+        <!-- Fórmula de inércia para esfera sólida -->
+        <inertia
+          ixx="${(2/5) * mass * radius * radius}"
+          ixy="0.0" ixz="0.0"
+          iyy="${(2/5) * mass * radius * radius}"
+          iyz="0.0"
+          izz="${(2/5) * mass * radius * radius}"/>
+      </inertial>
+    </link>
+  </xacro:macro>
+
+</robot>
