@@ -11,7 +11,7 @@ def generate_launch_description():
     xacro_file = os.path.join(
         get_package_share_directory('rm_description'),
         'urdf',
-        'robot_arm.xacro'
+        'differential_robot.xacro'
     )
 
     # Processar XACRO para URDF

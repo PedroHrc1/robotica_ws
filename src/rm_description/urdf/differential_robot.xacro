@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<robot name="differential_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- ============================================ -->
+  <!-- ARQUIVO PRINCIPAL                            -->
+  <!-- Importa propriedades e macros, define o robô -->
+  <!-- ============================================ -->
+
+  <!-- ==================== -->
+  <!-- IMPORTAÇÃO DE ARQUIVOS -->
+  <!-- ==================== -->
+  <!--
+    xacro:include importa o conteúdo de outros arquivos .xacro
+    $(find package_name) retorna o caminho do pacote ROS
+  -->
+  
+  <xacro:include filename="$(find rm_description)/urdf/properties.xacro"/>
+  <xacro:include filename="$(find rm_description)/urdf/wheels.xacro"/>
+  
+
+  <!-- ==================== -->
+  <!-- BASE FOOTPRINT       -->
+  <!-- ==================== -->
+  <link name="base_footprint">
+  </link>
+  <!-- ==================== -->
+  <!-- BASE LINK            -->
+  <!-- ==================== -->
+  <link name="base_link">
+    <visual>
+      <origin xyz="0.13 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="${base_length} ${base_width} ${base_height}"/>
+      </geometry>
+      <material name="gray"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="${base_length} ${base_width} ${base_height}"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="${base_mass}"/>
+      <inertia
+        ixx="${(1/12) * base_mass * (3*base_width*base_width + base_height*base_height)}"
+        ixy="0.0" ixz="0.0"
+        iyy="${(1/12) * base_mass * (3*base_length*base_length + base_height*base_height)}"
+        iyz="0.0"
+        izz="${(1/2) * base_mass * base_length * base_length}"/>
+    </inertial>
+  </link>
+
+  <joint name="base_joint" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 ${0.1 + base_height/2}" rpy="0 0 0"/>
+  </joint>
+  
+  <!-- Roda Esquerda -->
+  <xacro:wheels
+  name="left_wheel"
+  length="0.05"
+  radius="0.15"
+  mass="0.5"
+  material="blue"/>
+
+  <joint name="left_wheel_joint" type="continuous">
+  <parent link="base_link"/>
+  <child link="left_wheel"/>
+  <origin xyz="0 ${base_width/2 + 0.05/2} 0"
+          rpy="1.5708 0 0"/>
+  <axis xyz="0 0 11"/>
+  </joint>
+
+  <!-- Roda Direita -->
+  <xacro:wheels
+  name="right_wheel"
+  length="0.05"
+  radius="0.15"
+  mass="0.5"
+  material="blue"/>
+
+  <joint name="right_wheel_joint" type="continuous">
+  <parent link="base_link"/>
+  <child link="right_wheel"/>
+  <origin xyz="0 -${base_width/2 + 0.05/2} 0" rpy="1.5708 0 0"/>
+  <axis xyz="0 0 1"/>
+</joint>
+ 
+  <xacro:sphere_link
+  name="caster_ball"
+  radius="0.1"
+  mass="0.5"
+  material="red"/>
+
+  <joint name="caster_joint" type="fixed">
+  <parent link="base_link"/>
+  <child link="caster_ball"/>
+
+  <origin xyz="0.25 0 -0.05"
+          rpy="0 0 0"/>
+</joint>
+  
+
+  
+
+</robot>
+
+  
