@@ -28,6 +28,7 @@ endif()
 install(
   DIRECTORY
     urdf
+    world
     launch
     rviz
   DESTINATION

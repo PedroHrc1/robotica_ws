@@ -1433,7 +1433,87 @@
     <include>
       <uri>file:///home/phcol/.gz/fuel/fuel.gazebosim.org/openrobotics/models/platypus/3</uri>
       <name>platypus</name>
-      <pose>-4.8551201820373535 0.39729601144790649 0 0 0 -2.5112343082599713</pose>
+      <pose>1.2772034406661985 3.2261133193969727 0.53873997926712036 0 0 -0.34863300146416881</pose>
+    </include>
+    <include>
+      <uri>file:///home/phcol/.gz/fuel/fuel.gazebosim.org/openrobotics/models/sofa/3</uri>
+      <name>Sofa</name>
+      <pose>1.912766695022583 5.6547412872314453 0 0 0 1.5736999926005149</pose>
+    </include>
+    <include>
+      <uri>file:///home/phcol/.gz/fuel/fuel.gazebosim.org/openrobotics/models/coffeetable/2</uri>
+      <name>CoffeeTable</name>
+      <pose>3.286917715108312 5.5718666500160206 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>file:///home/phcol/.gz/fuel/fuel.gazebosim.org/openrobotics/models/bookshelf/4</uri>
+      <name>Bookshelf</name>
+      <pose>0.1062358096241951 7.2237086296081543 0 0 0 1.5717500257074279</pose>
+    </include>
+    <include>
+      <uri>file:///home/phcol/.gz/fuel/fuel.gazebosim.org/openrobotics/models/bed/1</uri>
+      <name>Bed</name>
+      <pose>1.1118942499160767 3.6932199001312256 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>file:///home/phcol/.gz/fuel/fuel.gazebosim.org/openrobotics/models/normalbed/2</uri>
+      <name>NormalBed</name>
+      <pose>10.281096458435059 4.3769035339355451 0 0 0 -1.5823799554237241</pose>
+    </include>
+    <include>
+      <uri>file:///home/phcol/.gz/fuel/fuel.gazebosim.org/openrobotics/models/bedsidetablecart/3</uri>
+      <name>BedsideTableCart</name>
+      <pose>9.4918068553710988 5.2338297107328664 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>file:///home/phcol/.gz/fuel/fuel.gazebosim.org/openrobotics/models/oven/1</uri>
+      <name>Oven</name>
+      <pose>8.6314096450805664 8.3044004440307617 0 0 0 -1.5642971869861173</pose>
+    </include>
+    <include>
+      <uri>file:///home/phcol/.gz/fuel/fuel.gazebosim.org/openrobotics/models/refrigerator/1</uri>
+      <name>Fridge</name>
+      <pose>9.5768404006958008 8.4858903884887695 0 0 0 -1.5540705759646638</pose>
+    </include>
+    <include>
+      <uri>file:///home/phcol/.gz/fuel/fuel.gazebosim.org/openrobotics/models/toilet/2</uri>
+      <name>Toilet</name>
+      <pose>7.8853373527526864 5.0037126541137686 0 0 0 -3.1293800002629188</pose>
+    </include>
+    <include>
+      <uri>file:///home/phcol/.gz/fuel/fuel.gazebosim.org/openrobotics/models/whitecabinet/2</uri>
+      <name>WhiteCabinet</name>
+      <pose>0.44484001398086548 0.50217002630233765 0 0 0 1.5821188005677527</pose>
+    </include>
+    <include>
+      <uri>file:///home/phcol/.gz/fuel/fuel.gazebosim.org/openrobotics/models/kitchensink/2</uri>
+      <name>KitchenSink</name>
+      <pose>7.6290798187255859 8.4198999404907227 0 0 0 -1.5711390552438085</pose>
+    </include>
+    <include>
+      <uri>file:///home/phcol/.gz/fuel/fuel.gazebosim.org/openrobotics/models/cardboard box/3</uri>
+      <name>cardboard_box</name>
+      <pose>6.4415023485338416 3.566059194930173 0.14999999999999999 0 0 0</pose>
+    </include>
+    <include>
+      <uri>file:///home/phcol/.gz/fuel/fuel.gazebosim.org/openrobotics/models/cardboard box/3</uri>
+      <name>cardboard_box_0</name>
+      <pose>6.9569561655922252 3.4873409490730243 0.14999999999999999 0 0 0</pose>
+    </include>
+    <include>
+      <uri>file:///home/phcol/.gz/fuel/fuel.gazebosim.org/openrobotics/models/cardboard box/3</uri>
+      <name>cardboard_box_1</name>
+      <pose>6.4854497909545898 2.989840030670166 0.15000000596046448 0 0 0.35570370921125016</pose>
+    </include>
+    <include>
+      <uri>file:///home/phcol/.gz/fuel/fuel.gazebosim.org/openrobotics/models/cardboard box/3</uri>
+      <name>cardboard_box_2</name>
+      <pose>6.6229100227355957 3.311269998550415 0.47751298546791077 0 0 0.69941297600842378</pose>
+    </include>
+    <include>
+      <uri>https://fuel.gazebosim.org/1.0/sebbyjp/models/tv_65in_emissive</uri>
+      <name>tv_65in_emissive</name>
+      <pose>1.3061959743499756 0.11805498600006104 1.6532900333404541 0 0 -1.5723399974437644</pose>
     </include>
     <light name='sun' type='directional'>
       <pose>0 0 10 0 0 0</pose>

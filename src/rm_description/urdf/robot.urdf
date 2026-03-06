@@ -35,48 +35,35 @@
     <color rgba="0 0.8 0 1"/>
   </material>
   <!-- ============================================ -->
-  <!-- ARQUIVO DE PROPRIEDADES                      -->
-  <!-- Contém todas as constantes e dimensões       -->
+  <!-- ARQUIVO DE MACROS                            -->
+  <!-- Contém componentes reutilizáveis             -->
   <!-- ============================================ -->
-  <!-- ============================================ -->
-  <!-- MATERIAIS (cores)                            -->
-  <!-- ============================================ -->
-  <material name="gray">
-    <color rgba="0.5 0.5 0.5 1"/>
-  </material>
-  <material name="blue">
-    <color rgba="0 0 0.8 1"/>
-  </material>
-  <material name="red">
-    <color rgba="0.8 0 0 1"/>
-  </material>
-  <material name="green">
-    <color rgba="0 0.8 0 1"/>
-  </material>
   <!-- ==================== -->
   <!-- BASE FOOTPRINT       -->
   <!-- ==================== -->
-  <link name="base_footprint">
-  </link>
+  <link name="base_footprint"/>
+  <gazebo reference="base_footprint">
+    <static>true</static>
+  </gazebo>
   <!-- ==================== -->
   <!-- BASE LINK            -->
   <!-- ==================== -->
   <link name="base_link">
     <visual>
-      <origin rpy="0 0 0" xyz="0 0 1"/>
+      <origin rpy="0 0 0" xyz="0.13 0 0"/>
       <geometry>
         <box size="0.5 0.3 0.1"/>
       </geometry>
       <material name="gray"/>
     </visual>
     <collision>
-      <origin rpy="0 0 0" xyz="0 0 1"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
         <box size="0.5 0.3 0.1"/>
       </geometry>
     </collision>
     <inertial>
-      <origin rpy="0 0 0" xyz="0 0 1"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
       <mass value="2.0"/>
       <inertia ixx="0.04666666666666666" ixy="0.0" ixz="0.0" iyy="0.12666666666666665" iyz="0.0" izz="0.25"/>
     </inertial>
@@ -84,37 +71,88 @@
   <joint name="base_joint" type="fixed">
     <parent link="base_footprint"/>
     <child link="base_link"/>
-    <origin rpy="0 0 0" xyz="0 0 0.05"/>
+    <origin rpy="0 0 0" xyz="0 0 0.15000000000000002"/>
   </joint>
-  <!-- ==================== -->
-  <!-- LEFT WHEEL           -->
-  <!-- ==================== -->
   <link name="left_wheel">
     <visual>
       <!-- Desloca para que a BASE do cilindro fique na origem -->
-      <origin rpy="0 0 0" xyz="0 0 0.025"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <cylinder length="0.05" radius="0.1"/>
+        <cylinder length="0.05" radius="0.15"/>
       </geometry>
       <material name="blue"/>
     </visual>
     <collision>
-      <origin rpy="0 0 0" xyz="0 0 0.025"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <cylinder length="0.05" radius="0.1"/>
+        <cylinder length="0.05" radius="0.15"/>
       </geometry>
     </collision>
     <inertial>
-      <origin rpy="0 0 0" xyz="0 0 0.025"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
       <mass value="0.5"/>
       <!-- Fórmula de inércia para cilindro sólido -->
-      <inertia ixx="0.001354166666666667" ixy="0.0" ixz="0.0" iyy="0.001354166666666667" iyz="0.0" izz="0.0025000000000000005"/>
+      <inertia ixx="0.0029166666666666664" ixy="0.0" ixz="0.0" iyy="0.0029166666666666664" iyz="0.0" izz="0.005625"/>
     </inertial>
   </link>
   <joint name="left_wheel_joint" type="continuous">
     <parent link="base_link"/>
     <child link="left_wheel"/>
-    <origin rpy="0 1.5707 0" xyz="0 0.15 0"/>
-    <axis xyz="0 1 0"/>
+    <origin rpy="1.5708 0 0" xyz="0 0.175 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+  <link name="right_wheel">
+    <visual>
+      <!-- Desloca para que a BASE do cilindro fique na origem -->
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.15"/>
+      </geometry>
+      <material name="blue"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.05" radius="0.15"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.5"/>
+      <!-- Fórmula de inércia para cilindro sólido -->
+      <inertia ixx="0.0029166666666666664" ixy="0.0" ixz="0.0" iyy="0.0029166666666666664" iyz="0.0" izz="0.005625"/>
+    </inertial>
+  </link>
+  <joint name="right_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="right_wheel"/>
+    <origin rpy="1.5708 0 0" xyz="0 -0.175 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+  <link name="caster_ball">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <sphere radius="0.1"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <sphere radius="0.1"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.5"/>
+      <!-- Fórmula de inércia para esfera sólida -->
+      <inertia ixx="0.0020000000000000005" ixy="0.0" ixz="0.0" iyy="0.0020000000000000005" iyz="0.0" izz="0.0020000000000000005"/>
+    </inertial>
+  </link>
+  <joint name="caster_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="caster_ball"/>
+    <origin rpy="0 0 0" xyz="0.25 0 -0.05"/>
   </joint>
 </robot>

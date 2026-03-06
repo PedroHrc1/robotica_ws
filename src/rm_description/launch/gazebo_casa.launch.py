@@ -17,7 +17,7 @@ def generate_launch_description():
     world_file = os.path.join(pkg_share, 'world', 'casa.sdf')
 
     # Processar o arquivo XACRO para obter o URDF
-    xacro_file = os.path.join(pkg_share, 'urdf', 'robot.urdf.xacro')
+    xacro_file = os.path.join(pkg_share, 'urdf', 'differential_robot.xacro')
     doc = xacro.parse(open(xacro_file))
     xacro.process_doc(doc)
     robot_description = doc.toxml()
