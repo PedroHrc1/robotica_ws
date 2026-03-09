@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
+  <xacro:include filename="$(find rm_description)/urdf/inertial_macros.xacro"/>
   <!-- ============================================ -->
   <!-- ARQUIVO DE MACROS                            -->
   <!-- Contém componentes reutilizáveis             -->
@@ -42,17 +43,12 @@
         </geometry>
       </collision>
 
-      <inertial>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
-        <mass value="${wheel_mass}"/>
-        <!-- Fórmula de inércia para cilindro sólido -->
-        <inertia
-          ixx="${(1/12) * wheel_mass * (3*wheel_radius*wheel_radius + wheel_length*wheel_length)}"
-          ixy="0.0" ixz="0.0"
-          iyy="${(1/12) * wheel_mass * (3*wheel_radius*wheel_radius + wheel_length*wheel_length)}"
-          iyz="0.0"
-          izz="${(1/2) * wheel_mass * wheel_radius * wheel_radius}"/>
-      </inertial>
+      <xacro:inertial_cylinder
+        mass="${wheel_mass}"
+        length="${wheel_length}"
+        radius="${wheel_radius}">
+      <origin xyz="0 0 0"/>
+    </xacro:inertial_cylinder>
     </link>
   </xacro:macro>
 
@@ -85,17 +81,12 @@
         </geometry>
       </collision>
 
-      <inertial>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
-        <mass value="${mass}"/>
-        <!-- Fórmula de inércia para esfera sólida -->
-        <inertia
-          ixx="${(2/5) * mass * radius * radius}"
-          ixy="0.0" ixz="0.0"
-          iyy="${(2/5) * mass * radius * radius}"
-          iyz="0.0"
-          izz="${(2/5) * mass * radius * radius}"/>
-      </inertial>
+      <xacro:inertial_sphere
+        mass="${mass}"
+        radius="${radius}">
+        <origin xyz="0 0 0"/>
+      </xacro:inertial_sphere>
+      
     </link>
   </xacro:macro>
 
