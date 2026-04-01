@@ -5,7 +5,7 @@
         <!-- Plugin de controle diferencial -->
         <plugin name="gz::sim::systems::DiffDrive" filename="gz-sim-diff-drive-system">
 
-            <!-- Juntas das rodas (devem corresponder ao differetial_robot.xacro) -->
+            <!-- Juntas das rodas (devem corresponder ao robot_core.xacro) -->
             <left_joint>left_wheel_joint</left_joint>
             <right_joint>right_wheel_joint</right_joint>
             <wheel_separation>0.35</wheel_separation>

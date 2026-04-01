@@ -1,0 +1,5 @@
+float32 degrees
+---
+bool success
+---
+float32 degrees_remaining

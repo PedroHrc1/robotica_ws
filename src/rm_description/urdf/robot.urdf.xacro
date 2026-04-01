@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="robot">
+
+    <xacro:include filename="$(find rm_description)/urdf/robot_core.xacro" />
+    <xacro:include filename="$(find rm_description)/urdf/sensors.xacro" />
+    <xacro:include filename="$(find rm_description)/urdf/gazebo_control.xacro" />
+
+    
+</robot>
